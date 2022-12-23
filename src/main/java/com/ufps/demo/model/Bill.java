@@ -20,8 +20,8 @@ import lombok.Data;
 @Data
 public class Bill {
     @Id
-    @SequenceGenerator(name="seleccion_id_seq", allocationSize=1)
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seleccion_id_seq")
+    @SequenceGenerator(name="bill_id_seq", allocationSize=1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="bill_id_seq")
     private Integer id;
 
     private Date date_bill;

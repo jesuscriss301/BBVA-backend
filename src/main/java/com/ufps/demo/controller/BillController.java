@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/user/{user_id}/bills")
+@RequestMapping("/users/{user_id}/bills")
 public class BillController {
     @Autowired
     BillRepository billRepo;

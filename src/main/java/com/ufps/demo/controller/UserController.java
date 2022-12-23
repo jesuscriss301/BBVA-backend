@@ -4,7 +4,6 @@
  */
 package com.ufps.demo.controller;
 import com.ufps.demo.model.User;
-import com.ufps.demo.repository.BillRepository;
 import com.ufps.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,7 +44,18 @@ public class UserController {
     }
 
     @PostMapping
-    public User postUsers(@RequestBody User user) {
+    public User postUsers(@PathVariable String username,@PathVariable String pass,@RequestBody User user) {
+        Optional<User> userCurrent = userRepo.findByUsername(username);
+        if(userCurrent.isPresent()){
+            User userReturn = userCurrent.get();
+            if(userReturn.getPass().equals(pass)){
+              return userReturn;}
+        }
+        return null;
+    }
+    
+    @PostMapping("/login")
+    public User loginUsers(@RequestBody User user) {
         userRepo.save(user);
         return user;
     }
