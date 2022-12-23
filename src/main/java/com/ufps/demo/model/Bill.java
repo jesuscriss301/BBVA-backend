@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.ufps.mundial.model;
+package com.ufps.demo.model;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -14,22 +16,23 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="seleccion")
+@Table(name="bill")
 @Data
-public class Seleccion {
-    
+public class Bill {
     @Id
     @SequenceGenerator(name="seleccion_id_seq", allocationSize=1)
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seleccion_id_seq")
     private Integer id;
 
-    private String nombre;
-
-    private int userCode;
+    private Date date_bill;
     
-    @OneToOne
-    private Integer continente_id;
+    @ManyToOne
+    private Integer user_id;
 
-    private String grupo;
+    private Integer value;
+
+    private String type;
+    
+    private String observation;
 
 }
